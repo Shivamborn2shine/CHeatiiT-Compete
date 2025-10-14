@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizMaster - Live Quiz Platform</title>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">QuizMaster</div>
+                <div id="user-info">
+                    <span id="user-name"></span>
+                    <button id="logout-btn" class="btn btn-secondary hidden">Logout</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Home View -->
+        <div id="home-view" class="view active">
+            <div class="card">
+                <h2>Welcome to QuizMaster</h2>
+                <p>Create interactive quizzes or join existing ones with a code.</p>
+                
+                <div style="display: flex; gap: 20px; margin-top: 30px;">
+                    <div style="flex: 1;">
+                        <h3>Join a Quiz</h3>
+                        <div class="form-group">
+                            <label for="join-code">Enter Quiz Code</label>
+                            <input type="text" id="join-code" placeholder="e.g., ABC123">
+                        </div>
+                        <div class="form-group">
+                            <label for="player-name">Your Name</label>
+                            <input type="text" id="player-name" placeholder="Enter your name">
+                        </div>
+                        <button id="join-btn" class="btn btn-primary">Join Quiz</button>
+                    </div>
+                    
+                    <div style="flex: 1;">
+                        <h3>Create a Quiz</h3>
+                        <p>Create your own interactive quiz with multiple questions.</p>
+                        <button id="create-btn" class="btn btn-secondary">Create New Quiz</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Presenter View -->
+        <div id="presenter-view" class="view">
+            <div class="card">
+                <h2>Your Quiz Session</h2>
+                <p>Share this code with participants: <span id="presenter-code" class="quiz-code">ABC123</span></p>
+                
+                <div class="form-group">
+                    <label for="quiz-title">Quiz Title</label>
+                    <input type="text" id="quiz-title" placeholder="Enter quiz title">
+                </div>
+                
+                <div id="questions-container">
+                    <!-- Questions will be added here dynamically -->
+                </div>
+                
+                <button id="add-question-btn" class="btn btn-primary">Add Question</button>
+                <button id="start-quiz-btn" class="btn btn-success">Start Quiz</button>
+            </div>
+            
+            <div id="live-results" class="card hidden">
+                <h2>Live Results</h2>
+                <div id="results-chart" class="results-chart">
+                    <!-- Chart bars will be added here dynamically -->
+                </div>
+                <div id="leaderboard" class="leaderboard">
+                    <!-- Leaderboard items will be added here dynamically -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Participant View -->
+        <div id="participant-view" class="view">
+            <div class="card">
+                <h2 id="participant-quiz-title">Quiz Title</h2>
+                <div id="waiting-screen">
+                    <p>Waiting for the quiz to start...</p>
+                </div>
+                
+                <div id="question-screen" class="hidden">
+                    <div class="question" id="current-question">Question will appear here</div>
+                    <div class="timer" id="question-timer">Time left: 30s</div>
+                    <div class="progress-bar">
+                        <div class="progress" id="timer-progress"></div>
+                    </div>
+                    <div class="options" id="options-container">
+                        <!-- Options will be added here dynamically -->
+                    </div>
+                    <button id="submit-answer-btn" class="btn btn-primary hidden">Submit Answer</button>
+                </div>
+                
+                <div id="answer-submitted" class="hidden">
+                    <p>Your answer has been submitted. Waiting for other participants...</p>
+                </div>
+                
+                <div id="results-screen" class="hidden">
+                    <h3>Results</h3>
+                    <div id="participant-results-chart" class="results-chart">
+                        <!-- Chart bars will be added here dynamically -->
+                    </div>
+                    <div id="participant-leaderboard" class="leaderboard">
+                        <!-- Leaderboard items will be added here dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+</html>
