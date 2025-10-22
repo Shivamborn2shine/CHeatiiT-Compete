@@ -28,8 +28,8 @@
                 <h2>Welcome to QuizMaster</h2>
                 <p>Create interactive quizzes or join existing ones with a code.</p>
                 
-                <div style="display: flex; gap: 20px; margin-top: 30px;">
-                    <div style="flex: 1;">
+                <div class="home-actions">
+                    <div class="action-section">
                         <h3>Join a Quiz</h3>
                         <div class="form-group">
                             <label for="join-code">Enter Quiz Code</label>
@@ -42,7 +42,7 @@
                         <button id="join-btn" class="btn btn-primary">Join Quiz</button>
                     </div>
                     
-                    <div style="flex: 1;">
+                    <div class="action-section">
                         <h3>Create a Quiz</h3>
                         <p>Create your own interactive quiz with multiple questions.</p>
                         <button id="create-btn" class="btn btn-secondary">Create New Quiz</button>
@@ -66,8 +66,10 @@
                     <!-- Questions will be added here dynamically -->
                 </div>
                 
-                <button id="add-question-btn" class="btn btn-primary">Add Question</button>
-                <button id="start-quiz-btn" class="btn btn-success">Start Quiz</button>
+                <div class="action-buttons">
+                    <button id="add-question-btn" class="btn btn-primary">Add Question</button>
+                    <button id="start-quiz-btn" class="btn btn-success">Start Quiz</button>
+                </div>
             </div>
             
             <div id="live-results" class="card hidden">
@@ -117,5 +119,7 @@
             </div>
         </div>
     </div>
-        
+
+    <script src="app.js"></script>
+</body>
 </html>
